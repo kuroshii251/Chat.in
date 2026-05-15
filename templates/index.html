@@ -1,123 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/fontawesome.min.css" integrity="sha512-J2Gce+WmOttffHOrVKLTlzxIalPXUMDbSfn5ADqp8Vj9EngnjNHr+jjiL3ZB8muEzo+K51gU10X+0eGqGNL7QA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
-<body class="bg-dark">
-    <div class="col ">
-            <div class="col">
-                <div style="background-color:rgb(0, 0, 0)">
-                    <div class="d-flex gap-5 p-3 container justify-content-center align-items-center ">
-                        <div class=" col-2 p-2">
-                        <img src="{{url_for('static', filename='waguri.jpg')}}" alt="tes" height="70" class="rounded-circle" alt="">
-
-                        </div>
-                        <div class="col-8">
-                                                <p class="text-white fw-bold fs-2">Waguri</p>
-
-                        </div>
-                          
-                    </div>
-
-                </div>
-                </div>
-                </div>
-                
-        {% for anjay in history[:-1] %}
-        <div class="align-items-center"  >
-                <div class="col p-3 align-items-center">
- <div class="col ms-auto bg-success rounded-3 w-50">
-        <p class=" p-3 text-white">{{anjay.user}}</p>
-
-        </div>
-        </div>
-       
-  <div class="col p-3">
- <div class="col bg-success rounded-3 w-50 mt-2">
-        <p class=" p-3 text-white" >{{anjay.answer}}</p>
-
-        </div>
-        </div> 
-        </div>
-   
-
-        {% endfor %}
-       {% if history%} 
-         <div class="col p-3">
- <div class="col bg-success ms-auto rounded-3 w-50 mt-2">
-       <p class="text-white p-3"> {{history[-1].user}}</p>
-       </div>
-       </div>
-         <div class="col p-3">
- <div class="col bg-success rounded-3 p-3 w-50 mt-2">
-       <p class="text-white " id="hasil" class="p-3"></p>
-       </div>
-       </div>
-       {%endif%}
-<div class="p-3">
- <div class="col rounded-5 p-3 justify-content-center container " style=" background-color:rgb(50, 50, 50); ">
-  <form method="POST" action="/" class="justify-content-center container mx-auto">
-    <div class="d-flex gap-2">
-                <input type="text"  class="bg-dark text-white form-control p-2 rounded-5" name="tempatmasukin">
-                        <button type="submit" class="btn btn-dark rounded-circle">
-                            <i class="fa-solid fa-arrow-up"></i>
-                        </button>
-
-    </form>
-        <form action="/reset">
-                <button type="submit" class="btn btn-dark rounded-circle">
-                    <i class="fa-solid fa-rotate-right"></i>
-                </button>
-    
-
-
-
-    </div>
-    
-
-       </div>
-</div>
-      
-        
-    </form>
-   
-    </div>
-
-        
-
-   
- 
-    
-
-     <script>
-     teks = "{{result}}";
-     i=0;
-     hasil = document.getElementById('hasil');
-
-
-    
-
-
-
-
-     function efekKetiK(){
-        if(i < teks.length){
-            hasil.innerHTML+= teks.charAt(i);
-            setTimeout(efekKetiK, 90);
-            i++;
+    <title>Pilih Karakter ✦</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        syne: ['Syne', 'sans-serif'],
+                        dm: ['DM Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        bg: '#08080f',
+                        surface: '#0e0e1a',
+                        border: 'rgba(255,255,255,0.06)',
+                    },
+                    animation: {
+                        fadeUp: 'fadeUp 0.6s ease forwards',
+                        fadeUp1: 'fadeUp 0.6s ease 0.1s forwards',
+                        fadeUp2: 'fadeUp 0.6s ease 0.2s forwards',
+                        fadeUp3: 'fadeUp 0.5s ease 0.3s forwards',
+                        fadeUp4: 'fadeUp 0.5s ease 0.38s forwards',
+                        fadeUp5: 'fadeUp 0.5s ease 0.46s forwards',
+                        fadeUp6: 'fadeUp 0.5s ease 0.54s forwards',
+                        fadeUp7: 'fadeUp 0.5s ease 0.7s forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            'from': { opacity: '0', transform: 'translateY(20px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
         }
-     }
-     if(teks){
-        efekKetiK();
-     }
     </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.5;
+        }
 
-    
+        
+        .opacity-0-init { opacity: 0; }
+        .card-top-line::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--card-accent, #888);
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 20px 20px 0 0;
+        }
+        .char-card:hover .card-top-line::before { opacity: 1; }
+        .card-glow::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% -20%, var(--card-glow, rgba(255,255,255,0.04)) 0%, transparent 70%);
+            pointer-events: none;
+            border-radius: 20px;
+        }
+        .card-cta-text { transition: gap 0.2s; }
+        .char-card:hover .card-cta-text { gap: 10px; }
+        .char-card:hover .card-emoji-el { transform: scale(1.1); }
+        .card-emoji-el { transition: transform 0.3s; }
+        /* gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #c084fc, #e879f9, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-[#08080f] text-[#ededf5] font-dm min-h-screen overflow-x-hidden">
+
+    <!-- Ambient blobs -->
+    <div class="fixed rounded-full pointer-events-none z-0 blur-[100px] w-[500px] h-[500px] bg-violet-600/[0.08] -top-36 -left-24"></div>
+    <div class="fixed rounded-full pointer-events-none z-0 blur-[100px] w-[400px] h-[400px] bg-pink-600/[0.07] -bottom-24 -right-24"></div>
+    <div class="fixed rounded-full pointer-events-none z-0 blur-[100px] w-[300px] h-[300px] bg-cyan-500/[0.05] top-[40%] left-1/2 -translate-x-1/2"></div>
+
+    <div class="relative z-10 max-w-[900px] mx-auto px-6 py-16 pb-20">
+
+        <div class="flex items-center justify-between mb-[72px] opacity-0-init animate-fadeUp1">
+            <div class="font-syne font-extrabold text-[1.1rem] tracking-tight text-[#ededf5]">
+                Chat<span class="text-[#5a5a7a] font-normal">.in</span>
+            </div>
+           
+        </div>
+
+        <div class="mb-16 opacity-0-init animate-fadeUp2">
+<p class="text-[0.72rem] tracking-[0.14em] uppercase bg-[#08080f] mb-5 px-4 py-2 rounded-xl border border-gray-100 text-[#ededf5] mb-4 w-fit mx-auto">
+  ✦ AI Character Chat
+</p>            <h1 class="font-syne font-extrabold leading-[1.05] text-center tracking-[-0.03em] text-[#ededf5] mb-5"
+                style="font-size: clamp(2.4rem, 6vw, 4.2rem)">
+                Pilih siapa yang<br>mau lo <em class="not-italic gradient-text">ajak ngobrol</em>
+            </h1>
+            <p class="text-base text-[#5a5a7a] max-w-[420px] text-center justify-center mx-auto  leading-relaxed font-light">
+                Setiap karakter punya kepribadian uniknya sendiri. Pilih satu dan mulai percakapan.
+            </p>
+        </div>
+
+        <div class="grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))">
+
+            <a href="/ai?role=waguri"
+               class="char-card relative bg-[#0e0e1a] border border-white/[0.06] rounded-[20px] p-8 pb-6 cursor-pointer overflow-hidden
+                      transition-all duration-300 no-underline block opacity-0-init animate-fadeUp3
+                      hover:border-white/[0.14] hover:-translate-y-1"
+               style="--card-accent: #f9a8d4; --card-glow: rgba(249,168,212,0.06);">
+                <div class="card-top-line card-glow"></div>
+                <img src="/static/avatar/waguri.png" class="w-20 mx-auto rounded-full "/>
+                <div class="font-syne font-bold mt-3 text-lg tracking-[-0.01em] text-[#ededf5] mb-1.5">Waguri Tsumugi</div>
+                <div class="text-[0.7rem] tracking-[0.06em] uppercase text-[#5a5a7a] mb-4">Film apa tuh lupa gw</div>
+                <div class="text-[0.82rem] text-[#5a5a7a] leading-[1.55]font-light mb-6">
+                    Gadis ceria yang suka makanan manis. Selalu hangat dan antusias merespons.
+                </div>
+                <div class="card-cta-text inline-flex items-center gap-1.5 text-[0.78rem] font-medium tracking-[0.04em]" style="color: #a78bfa;">
+                    Chat sekarang
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </a>
+
+            <a href="/ai?role=naruto"
+               class="char-card relative bg-[#0e0e1a] border border-white/[0.06] rounded-[20px] p-8 pb-6 cursor-pointer overflow-hidden
+                      transition-all duration-300 no-underline block opacity-0-init animate-fadeUp4
+                      hover:border-white/[0.14] hover:-translate-y-1"
+               style="--card-accent: #fb923c; --card-glow: rgba(251,146,60,0.06);">
+                <div class="card-top-line card-glow"></div>
+                <img src="/static/avatar/naruto.png" class="w-20 justify-center mx-auto rounded-full "/>
+                <div class="font-syne font-bold mt-3 text-[1.05rem] tracking-[-0.01em] text-[#ededf5] mb-1.5">Naruto Uzumaki</div>
+                <div class="text-[0.7rem] text-center tracking-[0.06em] uppercase text-[#5a5a7a] mb-4">Naruto</div>
+                <div class="text-[0.82rem] text-[#5a5a7a] leading-[1.55] font-light mb-6">
+                    Hokage Ketujuh Konoha. Penuh semangat, optimis, dan selalu encouraging. Dattebayo!
+                </div>
+              <div class="card-cta-text inline-flex items-center gap-1.5 text-[0.78rem] font-medium tracking-[0.04em]" style="color: #a78bfa;">
+                    Chat sekarang
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </a>
+
+            <a href="/ai?role=jungkook"
+               class="char-card relative bg-[#0e0e1a] border border-white/[0.06] rounded-[20px] p-8 pb-6 cursor-pointer overflow-hidden
+                      transition-all duration-300 no-underline block opacity-0-init animate-fadeUp5
+                      hover:border-white/[0.14] hover:-translate-y-1"
+               style="--card-accent: #a78bfa; --card-glow: rgba(167,139,250,0.06);">
+                <div class="card-top-line card-glow"></div>
+                <img src="/static/avatar/jungkook.png" class="w-20 justify-center mx-auto rounded-full "/>
+                <div class="font-syne font-bold text-center mt-3 text-[1.05rem] tracking-[-0.01em] text-[#ededf5] mb-1.5">Jungkook</div>
+                <div class="text-[0.7rem] text-center tracking-[0.06em] uppercase text-[#5a5a7a] mb-4">BTS</div>
+                <div class="text-[0.82rem] text-[#5a5a7a] leading-[1.55] font-light mb-6">
+                    Santai, ramah, dan sangat perhatian. Suka nyanyi, olahraga, dan gaming. Bikin lo merasa spesial.
+                </div>
+                <div class="card-cta-text inline-flex items-center gap-1.5 text-[0.78rem] font-medium tracking-[0.04em]" style="color: #a78bfa;">
+                    Chat sekarang
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </a>
+
+            <a href="/ai?role=suga"
+               class="char-card relative bg-[#0e0e1a] border border-white/[0.06] rounded-[20px] p-8 pb-6 cursor-pointer overflow-hidden
+                      transition-all duration-300 no-underline block opacity-0-init animate-fadeUp6
+                      hover:border-white/[0.14] hover:-translate-y-1"
+               style="--card-accent: #94a3b8; --card-glow: rgba(148,163,184,0.06);">
+                <div class="card-top-line card-glow"></div>
+                <img src="/static/avatar/suga.png" class="w-20 justify-center mx-auto rounded-full "/>
+                <div class="font-syne font-bold text-center mt-3 text-[1.05rem] tracking-[-0.01em] text-[#ededf5] mb-1.5">Suga (Yoongi)</div>
+                <div class="text-[0.7rem] text-center tracking-[0.06em] uppercase text-[#5a5a7a] mb-4">BTS</div>
+                <div class="text-[0.82rem] text-[#5a5a7a] leading-[1.55] font-light mb-6">
+                    Kalem di luar, hangat di dalam. Bicara singkat tapi penuh makna. Ada kalau lo butuh.
+                </div>
+               <div class="card-cta-text inline-flex items-center gap-1.5 text-[0.78rem] font-medium tracking-[0.04em]" style="color: #a78bfa;">
+                    Chat sekarang
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-20 text-center text-[0.72rem] text-[#5a5a7a] tracking-[0.05em] opacity-0-init animate-fadeUp7">
+            Created by Andika CR &nbsp;·&nbsp; Chat.in
+        </div>
+    </div>
 </body>
 </html>

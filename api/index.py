@@ -10,6 +10,7 @@ app.secret_key = os.getenv("SECRET_KEY", "waifu_secret_key_88")
 
 MAX_HISTORY = 10
 
+
 @app.route("/")
 def home():
     if "history" not in session:
@@ -22,11 +23,18 @@ def chat():
     role = data.get("role", "waguri")
     user_message = data.get("message")
 
+    # Reset history kalau karakter berubah, biar konteks gak kebawa dari role lain.
+    current_role = session.get("role")
+    if current_role != role:
+        session["history"] = []
+        session["role"] = role
+
     character = get_character(role)
     if not character:
         return jsonify({"error": "Karakter tidak ditemukan!"}), 404
 
     history = session.get("history", [])
+
 
     reply = generate_reply(
         character_prompt=character["prompt"],

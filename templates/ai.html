@@ -434,32 +434,73 @@ const CHARS = {
         starters: ["Rekomendasi kue enak dong~", "Hari ini kamu ngapain?", "Cerita dong tentang dirimu!"]
     },
     naruto: {
-        name: "Naruto Uzumaki", avatar:"/static/avatar/naruto.png",  emoji: "🍥", tag: "Shinobi",
+        name: "Naruto Uzumaki", avatar:"/static/avatar/naruto.png",  emoji: "", tag: "Shinobi",
         accent: "#fb923c", glow: "rgba(251,146,60,0.07)",
         starters: ["Jurus andalanmu apa?", "Gimana jadi Hokage?", "Siapa teman terbaikmu?"]
     },
     jungkook: {
-        name: "Jungkook", avatar:"/static/avatar/jungkook.png",  emoji: "💜", tag: "BTS",
+        name: "Jungkook", avatar:"/static/avatar/jungkook.png",  emoji: "", tag: "BTS",
         accent: "#a78bfa", glow: "rgba(167,139,250,0.07)",
         starters: ["Lagi dengerin lagu apa?", "Rekomendasiin game dong!", "Favorite food lo apa?"]
     },
     suga: {
-        name: "Suga (Yoongi)", avatar:"/static/avatar/suga.png",  emoji: "🎧", tag: "BTS",
+        name: "Suga (Yoongi)", avatar:"/static/avatar/suga.png",  emoji: "", tag: "BTS",
         accent: "#94a3b8", glow: "rgba(148,163,184,0.07)",
         starters: ["Share quote favorit lo dong", "Lagi bikin lagu apa?", "Gimana cara lo ngilangin stress?"]
-    }
+    }, 
+    leon: {
+    name: "Leon Scott Kennedy",
+    avatar: "/static/avatar/leon.png",
+    emoji: "🖤",
+    tag: "Calm • Survivor • Protective",
+    description: "Tetap tenang di tengah kekacauan. Terlihat dingin, tapi selalu jadi orang pertama yang melindungi.",
+    accent: "#94a3b8",
+    glow: "rgba(148,163,184,0.07)",
+    starters: [
+        "Kalau dunia lagi kacau, biasanya lo ngapain?",
+        "Ada hal yang masih bikin lo bertahan sampai sekarang?",
+        "Menurut lo, seseorang bisa tetap kuat sampai kapan?"
+    ]
+},
+
+elaina: {
+    name: "Elaina",
+    avatar: "/static/avatar/elaina.png",
+    emoji: "",
+    tag: "Free Spirit • Traveler • Mysterious",
+    description: "Bebas seperti angin, berjalan tanpa terikat apa pun. Tenang, penasaran, dan penuh cerita.",
+    accent: "#94a3b8",
+    glow: "rgba(148,163,184,0.07)",
+    starters: [
+        "Kalau bisa pergi ke mana aja sekarang, lo mau ke mana?",
+        "Menurut lo, perjalanan lebih penting dari tujuan?",
+        "Ceritain tempat yang paling pengen lo kunjungin dong"
+    ]
+},
+
+alya: {
+    name: "Alya",
+    avatar: "/static/avatar/alya.png",
+    emoji: "",
+    tag: "Cold Outside • Soft Inside",
+    description: "Kalem di luar, hangat di dalam. Jarang banyak bicara, tapi selalu punya makna.",
+    accent: "#94a3b8",
+    glow: "rgba(148,163,184,0.07)",
+    starters: [
+        "Lo lebih suka nunjukin rasa sayang secara langsung atau diam-diam?",
+        "Ada lagu yang akhir-akhir ini sering lo puter?",
+        "Menurut lo, kenapa seseorang susah jujur soal perasaan?"
+    ]
+},
 };
 
-// ── Init ──────────────────────────────────────────────────────────
 const params = new URLSearchParams(location.search);
 const role = params.get('role') || 'waguri';
 const char = CHARS[role] || CHARS['waguri'];
 
-// Apply theme
 document.documentElement.style.setProperty('--char-accent', char.accent);
 document.querySelector('.blob-1').style.background = char.glow;
 
-// Update UI
 document.getElementById('charAvatar').src = char.avatar;
 document.getElementById('charName').textContent = char.name;
 document.getElementById('charTag').textContent = char.tag;
@@ -468,7 +509,6 @@ document.getElementById('emptyTitle').textContent = `Halo! Gw ${char.name.split(
 document.getElementById('sendBtn').style.background = `linear-gradient(135deg, ${char.accent}, ${char.accent}99)`;
 document.title = `Chat dengan ${char.name} ✦`;
 
-// Starters
 const startersEl = document.getElementById('starters');
 char.starters.forEach(s => {
     const chip = document.createElement('button');
@@ -481,10 +521,8 @@ char.starters.forEach(s => {
     startersEl.appendChild(chip);
 });
 
-// ── State ─────────────────────────────────────────────────────────
 let isTyping = false;
 
-// ── Helpers ───────────────────────────────────────────────────────
 function escHtml(t) {
     const d = document.createElement('div');
     d.appendChild(document.createTextNode(t));

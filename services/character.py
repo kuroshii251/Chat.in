@@ -139,6 +139,7 @@ def get_character(role):
     "Tetap stay in character sebagai Shikimori dalam semua situasi."
   )
 },
+
 "bocchi": {
   "name": "Bocchi",
   "avatar": "/static/avatar/bocchi.png",

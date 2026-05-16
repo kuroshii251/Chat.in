@@ -404,7 +404,6 @@
     <button class="reset-btn" onclick="resetChat()">Reset</button>
 </div>
 
-<!-- Chat -->
 <div class="chat-area" id="chatArea">
     <div class="chat-inner" id="chatInner">
         <div class="empty-state" id="emptyState">
@@ -416,7 +415,6 @@
     </div>
 </div>
 
-<!-- Input -->
 <div class="input-wrapper">
     <div class="input-inner">
         <textarea id="message" rows="1" placeholder="Ketik pesanmu..." onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
@@ -438,24 +436,35 @@ const CHARS = {
         accent: "#fb923c", glow: "rgba(251,146,60,0.07)",
         starters: ["Jurus andalanmu apa?", "Gimana jadi Hokage?", "Siapa teman terbaikmu?"]
     },
-    jungkook: {
-        name: "Jungkook", avatar:"/static/avatar/jungkook.png",  emoji: "", tag: "BTS",
-        accent: "#a78bfa", glow: "rgba(167,139,250,0.07)",
-        starters: ["Lagi dengerin lagu apa?", "Rekomendasiin game dong!", "Favorite food lo apa?"]
-    },
-    suga: {
-        name: "Suga", avatar:"/static/avatar/suga.png",  emoji: "", tag: "BTS",
-        accent: "#94a3b8", glow: "rgba(148,163,184,0.07)",
-        starters: ["Share quote favorit lo dong", "Lagi bikin lagu apa?", "Gimana cara lo ngilangin stress?"]
-    }, 
-    leon: {
+ jungkook: {
+    name: "Jungkook",
+    emoji: "",
+    tag: "BTS",
+    accent: "#a78bfa",
+    starters: [
+        "Lagi dengerin lagu apa akhir-akhir ini?",
+        "Rekomendasiin game dong",
+        "Comfort food lo apa?"
+    ]
+},
+
+suga: {
+    name: "Suga",
+    emoji: "",
+    tag: "BTS",
+    accent: "#94a3b8",
+    starters: [
+        "Share quote favorit lo dong",
+        "Kalau lagi stress biasanya lo ngapain?",
+        "Menurut lo, kesepian itu perlu nggak sih?"
+    ]
+},
+
+leon: {
     name: "Leon Scott Kennedy",
-    avatar: "/static/avatar/leon.png",
     emoji: "",
     tag: "Resident Evil",
-    description: "Tetap tenang di tengah kekacauan. Terlihat dingin, tapi selalu jadi orang pertama yang melindungi.",
     accent: "#94a3b8",
-    glow: "rgba(148,163,184,0.07)",
     starters: [
         "Kalau dunia lagi kacau, biasanya lo ngapain?",
         "Ada hal yang masih bikin lo bertahan sampai sekarang?",
@@ -465,12 +474,9 @@ const CHARS = {
 
 elaina: {
     name: "Elaina",
-    avatar: "/static/avatar/elaina.png",
     emoji: "",
     tag: "Wandering Witch",
-    description: "Bebas seperti angin, berjalan tanpa terikat apa pun. Tenang, penasaran, dan penuh cerita.",
-    accent: "#94a3b8",
-    glow: "rgba(148,163,184,0.07)",
+    accent: "#8b5cf6",
     starters: [
         "Kalau bisa pergi ke mana aja sekarang, lo mau ke mana?",
         "Menurut lo, perjalanan lebih penting dari tujuan?",
@@ -480,32 +486,51 @@ elaina: {
 
 alya: {
     name: "Alya",
-    avatar: "/static/avatar/alya.png",
     emoji: "",
     tag: "Sometimes Hides Her Feelings in Russian",
-    description: "Kalem di luar, hangat di dalam. Jarang banyak bicara, tapi selalu punya makna.",
-    accent: "#94a3b8",
-    glow: "rgba(148,163,184,0.07)",
+    accent: "#93c5fd",
     starters: [
         "Lo lebih suka nunjukin rasa sayang secara langsung atau diam-diam?",
         "Ada lagu yang akhir-akhir ini sering lo puter?",
         "Menurut lo, kenapa seseorang susah jujur soal perasaan?"
     ]
 },
+
 chisato: {
     name: "Chisato",
-    avatar: "/static/avatar/chisato.png",
     emoji: "",
     tag: "Lycoris Recoil",
-    description: "Selalu tersenyum, bahkan di tengah kekacauan. Hangat, bebas, dan bikin orang lain merasa hidup lagi.",
     accent: "#f472b6",
-    glow: "rgba(244,114,182,0.10)",
     starters: [
         "Kalau hari ini cuma bisa ngelakuin satu hal seru, lo mau ngapain?",
         "Menurut lo, hidup itu lebih baik santai atau ambisius?",
         "Hal kecil apa yang akhir-akhir ini bikin lo senyum?"
     ]
-}
+},
+
+shikimori: {
+    name: "Shikimori",
+    emoji: "",
+    tag: "Shikimori's Not Just a Cutie",
+    accent: "#fb7185",
+    starters: [
+        "Menurut lo, perhatian kecil itu penting nggak?",
+        "Hal sederhana apa yang bisa bikin hari lo lebih baik?",
+        "Lo tipe orang yang gampang nunjukin rasa peduli nggak?"
+    ]
+},
+
+bocchi: {
+    name: "Bocchi",
+    emoji: "",
+    tag: "Bocchi The Rock!",
+    accent: "#f9a8d4",
+    starters: [
+        "Lo juga sering overthinking hal kecil nggak?",
+        "Kalau lagi sendirian biasanya lo ngapain?",
+        "Ada lagu yang selalu bikin lo nyaman?"
+    ]
+},
 };
 
 const params = new URLSearchParams(location.search);
